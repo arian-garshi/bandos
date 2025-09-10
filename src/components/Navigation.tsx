@@ -58,7 +58,6 @@ const Navigation = () => {
         <StyledToolbar>
           <LogoText
             variant="h6"
-            component="div"
             onClick={handleLogoClick}
           >
             Bandos
