@@ -1,10 +1,145 @@
 <!doctype html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
+    <!-- Basic Meta Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World</title>
+    <title>Bandos - Digitale Produkter | Webutvikling og Design i Oslo</title>
+    <meta name="description" content="Bandos bygger digitale produkter fra idé til drift. Webutvikling, UX design, prototyper og AI-løsninger. Ett lite team i Oslo som leverer rask fremdrift og målbare resultater." />
+    <meta name="keywords" content="webutvikling, digital utvikling, UX design, prototyper, AI-løsninger, React, Node.js, CMS, Oslo, Norge, startup, MVP, webapplikasjoner" />
+    <meta name="author" content="Bandos" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Norwegian" />
+    <meta name="geo.region" content="NO-03" />
+    <meta name="geo.placename" content="Oslo" />
+    <meta name="geo.position" content="59.913869;10.752245" />
+    <meta name="ICBM" content="59.913869, 10.752245" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bandos.no" />
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#D2415B" />
+    <meta name="msapplication-TileColor" content="#D2415B" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bandos.no" />
+    <meta property="og:title" content="Bandos - Digitale Produkter | Webutvikling og Design i Oslo" />
+    <meta property="og:description" content="Vi bygger digitale produkter fra idé til drift. Ett lite team som leverer webutvikling, UX design, prototyper og AI-løsninger med rask fremdrift og målbare resultater." />
+    <meta property="og:image" content="https://bandos.no/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:site_name" content="Bandos" />
+    <meta property="og:locale" content="nb_NO" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://bandos.no" />
+    <meta name="twitter:title" content="Bandos - Digitale Produkter | Webutvikling og Design i Oslo" />
+    <meta name="twitter:description" content="Vi bygger digitale produkter fra idé til drift. Ett lite team som leverer webutvikling, UX design, prototyper og AI-løsninger med rask fremdrift og målbare resultater." />
+    <meta name="twitter:image" content="https://bandos.no/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Bandos - Digitale Produkter og Webutvikling" />
+    
+    <!-- LinkedIn -->
+    <meta property="og:image:alt" content="Bandos - Digitale Produkter og Webutvikling" />
+    
+    <!-- Business/Contact Information -->
+    <meta name="contact" content="post@bandos.no" />
+    <meta name="reply-to" content="post@bandos.no" />
+    <meta name="owner" content="Bandos" />
+    <meta name="url" content="https://bandos.no" />
+    <meta name="identifier-URL" content="https://bandos.no" />
+    
+    <!-- Structured Data for Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Bandos",
+      "url": "https://bandos.no",
+      "logo": "https://bandos.no/og-image.jpg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+47-123-45-678",
+        "contactType": "customer service",
+        "email": "post@bandos.no",
+        "availableLanguage": ["Norwegian", "English"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Oslo",
+        "addressCountry": "NO"
+      },
+      "sameAs": [],
+      "description": "Bandos bygger digitale produkter fra idé til drift. Vi leverer webutvikling, UX design, prototyper og AI-løsninger med rask fremdrift og målbare resultater.",
+      "founder": {
+        "@type": "Person",
+        "name": "Bandos Team"
+      },
+      "foundingDate": "2024",
+      "industry": "Technology",
+      "numberOfEmployees": "2-10",
+      "slogan": "Fra idé til drift"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Bandos",
+      "url": "https://bandos.no",
+      "description": "Bandos bygger digitale produkter fra idé til drift. Webutvikling, UX design, prototyper og AI-løsninger.",
+      "inLanguage": "nb-NO",
+      "copyrightYear": "2024",
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Bandos"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Webutvikling og Digital Produktutvikling",
+      "description": "Vi bygger digitale produkter med React, Node.js, og moderne teknologi. Fra MVP til skalerbare løsninger.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Bandos",
+        "url": "https://bandos.no"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Norway"
+      },
+      "serviceType": "Web Development",
+      "category": "Technology Services"
+    }
+    </script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJ9MRVH446"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QJ9MRVH446');
+    </script>
   </head>
   <body>
     <div id="root"></div>
