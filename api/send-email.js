@@ -1,4 +1,4 @@
-module.exports = async function handler(req, res) {
+module.exports = async (req, res) => {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -13,35 +13,35 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, company, phone, message } = req.body || {};
-  
-  if (!email || !message) {
-    return res.status(400).json({ error: 'Missing required fields: email and message' });
-  }
-
-  // Get environment variables
-  const resendApiKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.FROM_EMAIL;
-  const toEmail = process.env.TO_EMAIL;
-  
-  if (!resendApiKey) {
-    console.error('RESEND_API_KEY is not set');
-    return res.status(500).json({ error: 'Email service not configured. Missing API key.' });
-  }
-  
-  if (!fromEmail || !toEmail) {
-    console.error('FROM_EMAIL or TO_EMAIL is not set', { fromEmail: !!fromEmail, toEmail: !!toEmail });
-    return res.status(500).json({ error: 'Email service not configured. Missing email addresses.' });
-  }
-  
-  console.log('Environment check:', {
-    hasApiKey: !!resendApiKey,
-    fromEmail,
-    toEmail,
-    requestBody: { name, email, company, phone, message }
-  });
-
   try {
+    const { name, email, company, phone, message } = req.body || {};
+    
+    if (!email || !message) {
+      return res.status(400).json({ error: 'Missing required fields: email and message' });
+    }
+
+    // Get environment variables
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const fromEmail = process.env.FROM_EMAIL;
+    const toEmail = process.env.TO_EMAIL;
+    
+    if (!resendApiKey) {
+      console.error('RESEND_API_KEY is not set');
+      return res.status(500).json({ error: 'Email service not configured. Missing API key.' });
+    }
+    
+    if (!fromEmail || !toEmail) {
+      console.error('FROM_EMAIL or TO_EMAIL is not set', { fromEmail: !!fromEmail, toEmail: !!toEmail });
+      return res.status(500).json({ error: 'Email service not configured. Missing email addresses.' });
+    }
+    
+    console.log('Environment check:', {
+      hasApiKey: !!resendApiKey,
+      fromEmail,
+      toEmail,
+      requestBody: { name, email, company, phone, message }
+    });
+
     const emailPayload = {
       from: fromEmail,
       to: toEmail,
@@ -59,7 +59,14 @@ module.exports = async function handler(req, res) {
       `
     };
 
-    const response = await fetch('https://api.resend.com/emails', {
+    // Use dynamic import for fetch if not available
+    let fetchFn = globalThis.fetch;
+    if (!fetchFn) {
+      const { default: fetch } = await import('node-fetch');
+      fetchFn = fetch;
+    }
+
+    const response = await fetchFn('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${resendApiKey}`,
