@@ -59,11 +59,12 @@ module.exports = async (req, res) => {
       `
     };
 
-    // Use dynamic import for fetch if not available
+    // Use native fetch (available in Node 18+) or fallback
     let fetchFn = globalThis.fetch;
     if (!fetchFn) {
-      const { default: fetch } = await import('node-fetch');
-      fetchFn = fetch;
+      // For older Node.js versions, you would need to install node-fetch
+      // For now, we assume Node 18+ is available on Vercel
+      throw new Error('Fetch is not available in this Node.js version');
     }
 
     const response = await fetchFn('https://api.resend.com/emails', {
