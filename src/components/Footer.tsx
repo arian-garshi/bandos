@@ -149,58 +149,58 @@ const LegalLink = styled(Link)`
 `;
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
-    return (
-        <FooterSection>
-            <FooterContainer>
-                <FooterContent>
-                    <BrandColumn>
-                        <FooterLogo>
-                            Bandos
-                        </FooterLogo>
-                        <FooterDescription>
-                            Vi bygger digitale produkter. Ett lite team som tar deg fra idé til drift med rask fremdrift og målbare resultater.
-                        </FooterDescription>
-                    </BrandColumn>
+  return (
+    <FooterSection>
+      <FooterContainer>
+        <FooterContent>
+          <BrandColumn>
+            <FooterLogo>
+              Bandos
+            </FooterLogo>
+            <FooterDescription>
+              Vi bygger digitale produkter. Ett lite team som tar deg fra idé til drift med rask fremdrift og målbare resultater.
+            </FooterDescription>
+          </BrandColumn>
 
-                    <FooterColumn>
-                        <FooterTitle>Tjenester</FooterTitle>
-                        <FooterLink href="#webutvikling">Webutvikling</FooterLink>
-                        <FooterLink href="#design">Design og workshop</FooterLink>
-                        <FooterLink href="#ai-losninger">AI-løsninger</FooterLink>
-                        <FooterLink href="#cms">CMS og innhold</FooterLink>
-                    </FooterColumn>
+          <FooterColumn>
+            <FooterTitle>Tjenester</FooterTitle>
+            <FooterLink href="#webutvikling">Webutvikling</FooterLink>
+            <FooterLink href="#design">Design og workshop</FooterLink>
+            <FooterLink href="#ai-losninger">AI-løsninger</FooterLink>
+            <FooterLink href="#cms">CMS og innhold</FooterLink>
+          </FooterColumn>
 
-                    <FooterColumn>
-                        <FooterTitle>Selskap</FooterTitle>
-                        <FooterLink href="#om-oss">Om oss</FooterLink>
-                        <FooterLink href="#arbeid">Vårt arbeid</FooterLink>
-                        <FooterLink href="#prosess">Prosess</FooterLink>
-                        <FooterLink href="#blogg">Blogg</FooterLink>
-                    </FooterColumn>
+          <FooterColumn>
+            <FooterTitle>Selskap</FooterTitle>
+            <FooterLink href="#om-oss">Om oss</FooterLink>
+            <FooterLink href="#arbeid">Vårt arbeid</FooterLink>
+            <FooterLink href="#prosess">Prosess</FooterLink>
+            <FooterLink href="#blogg">Blogg</FooterLink>
+          </FooterColumn>
 
-                    <FooterColumn>
-                        <FooterTitle>Kontakt</FooterTitle>
-                        <ContactInfo>post@bandos.no</ContactInfo>
-                        <ContactInfo>+47 123 45 678</ContactInfo>
-                        <ContactInfo>Oslo, Norge</ContactInfo>
-                    </FooterColumn>
-                </FooterContent>
+          <FooterColumn>
+            <FooterTitle>Kontakt</FooterTitle>
+            <ContactInfo>post@bandos.no</ContactInfo>
+            <ContactInfo>+47 123 45 678</ContactInfo>
+            <ContactInfo>Bergen, Norge</ContactInfo>
+          </FooterColumn>
+        </FooterContent>
 
-                <FooterBottom>
-                    <Copyright>
-                        © {currentYear} Bandos. Alle rettigheter reservert.
-                    </Copyright>
-                    <LegalLinks>
-                        <LegalLink href="#personvern">Personvern</LegalLink>
-                        <LegalLink href="#vilkar">Vilkår</LegalLink>
-                        <LegalLink href="#cookies">Cookies</LegalLink>
-                    </LegalLinks>
-                </FooterBottom>
-            </FooterContainer>
-        </FooterSection>
-    );
+        <FooterBottom>
+          <Copyright>
+            © {currentYear} Bandos. Alle rettigheter reservert.
+          </Copyright>
+          <LegalLinks>
+            <LegalLink href="#personvern">Personvern</LegalLink>
+            <LegalLink href="#vilkar">Vilkår</LegalLink>
+            <LegalLink href="#cookies">Cookies</LegalLink>
+          </LegalLinks>
+        </FooterBottom>
+      </FooterContainer>
+    </FooterSection>
+  );
 };
 
 export default Footer;
