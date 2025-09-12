@@ -21,7 +21,7 @@
 const CONFIG = {
   // Email settings
   defaultFromEmail: 'noreply@bandos.no',
-  defaultToEmail: 'post@bandos.no',
+  defaultToEmail: 'ariangars@gmail.com',
   
   // Website branding
   companyName: 'Bandos',
