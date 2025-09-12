@@ -20,7 +20,12 @@ module.exports = async function handler(req, res) {
   
   if (!resendApiKey) {
     console.error('RESEND_API_KEY is not set');
-    return res.status(500).json({ error: 'Server configuration error' });
+    return res.status(500).json({ error: 'Email service not configured. Missing API key.' });
+  }
+  
+  if (!fromEmail || !toEmail) {
+    console.error('FROM_EMAIL or TO_EMAIL is not set', { fromEmail: !!fromEmail, toEmail: !!toEmail });
+    return res.status(500).json({ error: 'Email service not configured. Missing email addresses.' });
   }
   
   console.log('Environment check:', {
@@ -57,15 +62,30 @@ module.exports = async function handler(req, res) {
     
     if (!resp.ok) {
       const text = await resp.text();
-      console.error('Resend API error:', text);
-      return res.status(502).json({ error: 'Email provider error', detail: text });
+      console.error('Resend API error:', {
+        status: resp.status,
+        statusText: resp.statusText,
+        responseBody: text,
+        requestPayload: { from: fromEmail, to: toEmail, subject: `Ny henvendelse fra ${name || 'Ukjent'} - Bandos` }
+      });
+      return res.status(502).json({ 
+        error: 'Failed to send email', 
+        detail: `Email service responded with ${resp.status}: ${text}` 
+      });
     }
     
     const result = await resp.json();
     console.log('Email sent successfully:', result);
     return res.status(200).json({ ok: true, messageId: result.id });
   } catch (err) {
-    console.error('Server error:', err);
-    return res.status(500).json({ error: 'Server error' });
+    console.error('Server error:', {
+      message: err.message,
+      stack: err.stack,
+      name: err.name
+    });
+    return res.status(500).json({ 
+      error: 'Internal server error', 
+      detail: process.env.NODE_ENV === 'development' ? err.message : 'Please try again later'
+    });
   }
 }
