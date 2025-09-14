@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import '@fontsource/space-grotesk/700.css';
 
 const FooterSection = styled.footer`
-  background: #000000;
+  background: ${({ theme }) => theme.colors.black};
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -63,7 +63,7 @@ const FooterLogo = styled(Typography)`
 
 const FooterDescription = styled(Typography)`
   && {
-    color: #cccccc;
+    color: ${({ theme }) => theme.colors.gray.medium};
     line-height: 1.6;
     margin-bottom: 24px;
     max-width: 300px;
@@ -76,7 +76,7 @@ const FooterDescription = styled(Typography)`
 
 const FooterTitle = styled(Typography)`
   && {
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.white};
     font-weight: 600;
     margin-bottom: 20px;
     font-size: 1rem;
@@ -85,7 +85,7 @@ const FooterTitle = styled(Typography)`
 
 const FooterLink = styled(Link)`
   && {
-    color: #cccccc;
+    color: ${({ theme }) => theme.colors.gray.medium};
     text-decoration: none;
     margin-bottom: 12px;
     font-size: 0.95rem;
@@ -99,7 +99,7 @@ const FooterLink = styled(Link)`
 
 const ContactInfo = styled(Typography)`
   && {
-    color: #cccccc;
+    color: ${({ theme }) => theme.colors.gray.medium};
     margin-bottom: 8px;
     font-size: 0.95rem;
   }
@@ -121,7 +121,7 @@ const FooterBottom = styled(Box)`
 
 const Copyright = styled(Typography)`
   && {
-    color: #999999;
+    color: ${({ theme }) => theme.colors.gray.medium};
     font-size: 0.9rem;
   }
 `;
@@ -137,7 +137,7 @@ const LegalLinks = styled(Box)`
 
 const LegalLink = styled(Link)`
   && {
-    color: #999999;
+    color: ${({ theme }) => theme.colors.gray.medium};
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.2s ease;
@@ -194,7 +194,7 @@ const Footer = () => {
             © {currentYear} Bandos. Alle rettigheter reservert.
           </Copyright>
           <LegalLinks>
-            <LegalLink href="mailto:post@bandos.no?subject=Personvernforespørsel">Personvern</LegalLink>
+            <LegalLink href="/personvern">Personvern</LegalLink>
           </LegalLinks>
         </FooterBottom>
       </FooterContainer>

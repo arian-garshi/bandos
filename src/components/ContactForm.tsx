@@ -1,29 +1,11 @@
-import { Container, Typography, TextField, Button, Box } from '@mui/material';
+import { Container, Typography, TextField, Box } from '@mui/material';
 import styled from 'styled-components';
 import { useState } from 'react';
 import Footer from './Footer';
+import { PrimaryButton } from './shared/Buttons';
+import FullWidthSection from './shared/FullWidthSection';
 
-const ContactSection = styled.section`
-  position: relative;
-  background: #000000;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  overflow: hidden;
-`;
-
-const TransitionShape = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  background: #ffffff;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  
-  ${({ theme }) => theme.breakpoints.down('md')} {
-    height: 70px;
-  }
-`;
+// ContactSection and TransitionShape replaced by FullWidthSection
 
 const ContactContainer = styled(Container)`
   && {
@@ -49,7 +31,7 @@ const ContactContent = styled(Box)`
 
 const ContactTitle = styled(Typography)`
   && {
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.white};
     font-weight: 600;
     margin-bottom: 16px;
     font-size: 2.5rem;
@@ -62,7 +44,7 @@ const ContactTitle = styled(Typography)`
 
 const ContactSubtitle = styled(Typography)`
   && {
-    color: #cccccc;
+    color: ${({ theme }) => theme.colors.gray.medium};
     font-size: 1.25rem;
     max-width: 500px;
     margin: 0 auto;
@@ -120,18 +102,18 @@ const StyledTextField = styled(TextField)`
     }
     
     .MuiInputLabel-root {
-      color: #cccccc;
+      color: ${({ theme }) => theme.colors.gray.medium};
       
       &.Mui-focused {
-        color: ${({ theme }) => theme.palette.primary.main};
+        color: ${({ theme }) => theme.colors.primary};
       }
     }
     
     .MuiOutlinedInput-input {
-      color: #ffffff;
+      color: ${({ theme }) => theme.colors.white};
       
       &::placeholder {
-        color: #999999;
+        color: ${({ theme }) => theme.colors.gray.medium};
         opacity: 1;
       }
     }
@@ -148,37 +130,6 @@ const FullWidthTextField = styled(StyledTextField)`
   }
 `;
 
-const SubmitButton = styled(Button)`
-  && {
-    background: linear-gradient(135deg, ${({ theme }) => theme.palette.primary.main} 0%, ${({ theme }) => theme.palette.primary.light} 100%);
-    color: white;
-    padding: 16px 48px;
-    font-size: 1.125rem;
-    font-weight: 600;
-    border-radius: 8px;
-    text-transform: none;
-    box-shadow: 0 8px 32px rgba(210, 65, 91, 0.3);
-    transition: all 0.3s ease;
-    
-    &:hover:not(:disabled) {
-      background: linear-gradient(135deg, ${({ theme }) => theme.palette.primary.dark} 0%, ${({ theme }) => theme.palette.primary.main} 100%);
-      box-shadow: 0 12px 40px rgba(210, 65, 91, 0.4);
-      transform: translateY(-2px);
-    }
-    
-    &:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: 0 8px 32px rgba(210, 65, 91, 0.2);
-    }
-    
-    ${({ theme }) => theme.breakpoints.down('sm')} {
-      width: 100%;
-      padding: 14px 32px;
-    }
-  }
-`;
 
 const StatusMessage = styled(Typography)`
   && {
@@ -189,13 +140,13 @@ const StatusMessage = styled(Typography)`
     border-radius: 8px;
     
     &.success {
-      color: #4caf50;
+      color: ${({ theme }) => theme.colors.success};
       background-color: rgba(76, 175, 80, 0.1);
       border: 1px solid rgba(76, 175, 80, 0.2);
     }
     
     &.error {
-      color: #f44336;
+      color: ${({ theme }) => theme.colors.error};
       background-color: rgba(244, 67, 54, 0.1);
       border: 1px solid rgba(244, 67, 54, 0.2);
     }
@@ -274,8 +225,11 @@ const ContactForm = () => {
   };
 
   return (
-    <ContactSection>
-      <TransitionShape />
+    <FullWidthSection
+      backgroundThemeColor="black"
+      showTopTransition={true}
+      transitionColor={undefined} // Uses default white
+    >
       <ContactContainer>
         <ContactContent>
           <ContactTitle variant="h2">
@@ -342,13 +296,13 @@ const ContactForm = () => {
             />
 
             <Box textAlign="center">
-              <SubmitButton
+              <PrimaryButton
                 type="submit"
                 variant="contained"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Sender...' : 'Send melding'}
-              </SubmitButton>
+              </PrimaryButton>
 
               {submitStatus === 'success' && (
                 <StatusMessage className="success">
@@ -366,7 +320,7 @@ const ContactForm = () => {
         </FormContainer>
       </ContactContainer>
       <Footer />
-    </ContactSection>
+    </FullWidthSection>
   );
 };
 

@@ -1,6 +1,8 @@
 import { Container, Typography, Box } from '@mui/material';
 import styled from 'styled-components';
 import { HelpCircle, Code, FileText, TrendingUp } from 'lucide-react';
+import PageSection from './shared/PageSection';
+import IconTextItem from './shared/IconTextItem';
 import responsivityImg from '../assets/graphics/responsivity.svg';
 import seoImg from '../assets/graphics/seo.svg';
 import safetyImg from '../assets/graphics/safety.svg';
@@ -11,28 +13,7 @@ import prototypeMainImg from '../assets/graphics/prototypeMain.svg';
 import developmentMainImg from '../assets/graphics/developmentMain.svg';
 import securitypackageImg from '../assets/graphics/securitypackage.svg';
 
-const SectionContainer = styled(Container)`
-  && {
-    padding: 80px 24px;
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      padding: 60px 16px;
-    }
-  }
-`;
-
-const SectionTitle = styled(Typography)`
-  && {
-    color: ${({ theme }) => theme.palette.text.primary};
-    font-weight: 600;
-    margin-bottom: 48px;
-    text-align: center;
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      margin-bottom: 32px;
-    }
-  }
-`;
+// SectionContainer and SectionTitle replaced by PageSection
 
 const ServiceSection = styled(Box)`
   margin-bottom: 120px;
@@ -225,9 +206,9 @@ const ExampleItem = styled(Box)`
   gap: 20px;
   margin-bottom: 32px;
   padding: 28px 24px;
-  background: #ffffff;
+  background: ${({ theme }) => theme.colors.white};
   border-radius: 12px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid ${({ theme }) => theme.colors.gray.light};
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   
   &:last-child {
@@ -256,7 +237,7 @@ const ExampleContent = styled(Box)`
 const ExampleTitle = styled(Typography)`
   && {
     font-weight: 600;
-    color: #1a1a1a;
+    color: ${({ theme }) => theme.colors.gray.darker};
     margin-bottom: 12px;
     font-size: 1.25rem;
     letter-spacing: -0.01em;
@@ -269,7 +250,7 @@ const ExampleTitle = styled(Typography)`
 
 const ExampleDescription = styled(Typography)`
   && {
-    color: #4a5568;
+    color: ${({ theme }) => theme.colors.gray.dark};
     line-height: 1.65;
     font-size: 1rem;
     font-weight: 400;
@@ -281,7 +262,7 @@ const ExampleDescription = styled(Typography)`
 `;
 
 const ProcessSteps = styled(Box)`
-  background: #f8f9fa;
+  background: ${({ theme }) => theme.colors.gray.light};
   padding: 24px;
   border-radius: 8px;
   margin-top: 24px;
@@ -362,10 +343,7 @@ const TjenesterSection = () => {
   ];
 
   return (
-    <SectionContainer>
-      <SectionTitle variant="h3">
-        Tjenester
-      </SectionTitle>
+    <PageSection title="Tjenester">
 
       <ServicesContainer>
         <ServiceSection>
@@ -428,23 +406,19 @@ const TjenesterSection = () => {
               </ServiceDescription>
 
               <ExamplesList>
-                <Typography variant="h6" style={{ fontWeight: 600, marginBottom: '24px', color: '#2c2c2c' }}>
+                <Typography variant="h6" style={{ fontWeight: 600, marginBottom: '24px' }}>
                   Eksempler som leverer nå
                 </Typography>
                 {aiExamples.map((example, index) => (
-                  <ExampleItem key={index}>
-                    <ExampleIcon>
-                      <example.icon size={20} />
-                    </ExampleIcon>
-                    <ExampleContent>
-                      <ExampleTitle>
-                        {example.title}
-                      </ExampleTitle>
-                      <ExampleDescription>
-                        {example.description}
-                      </ExampleDescription>
-                    </ExampleContent>
-                  </ExampleItem>
+                  <IconTextItem
+                    key={index}
+                    icon={example.icon}
+                    title={example.title}
+                    description={example.description}
+                    layout="horizontal"
+                    iconStyle="elevated"
+                    gap={20}
+                  />
                 ))}
               </ExamplesList>
 
@@ -483,7 +457,7 @@ const TjenesterSection = () => {
           </FeatureCard>
         ))}
       </FeaturesGrid>
-    </SectionContainer>
+    </PageSection>
   );
 };
 

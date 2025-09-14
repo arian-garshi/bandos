@@ -1,47 +1,10 @@
-import { Container, Typography, Box, Button } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
 import styled from 'styled-components';
 import marketingMainSvg from '../assets/graphics/marketingMain.svg';
+import { PrimaryButton, OutlineButton } from './shared/Buttons';
+import TwoColumnLayout from './shared/TwoColumnLayout';
 
-const HeroContent = styled(Box)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-  min-height: 500px;
-  
-  ${({ theme }) => theme.breakpoints.down('lg')} {
-    flex-direction: column-reverse;
-    gap: 40px;
-    text-align: center;
-    min-height: auto;
-  }
-`;
-
-const TextContent = styled(Box)`
-  flex: 1;
-  max-width: 500px;
-  
-  ${({ theme }) => theme.breakpoints.down('lg')} {
-    max-width: 100%;
-  }
-`;
-
-const ImageContainer = styled(Box)`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 500px;
-  
-  ${({ theme }) => theme.breakpoints.down('lg')} {
-    max-width: 350px;
-    width: 100%;
-  }
-  
-  ${({ theme }) => theme.breakpoints.down('sm')} {
-    max-width: 280px;
-  }
-`;
+// HeroContent, TextContent, ImageContainer replaced by TwoColumnLayout
 
 const StyledImage = styled.img`
   width: 100%;
@@ -93,46 +56,6 @@ const ButtonContainer = styled(Box)`
   }
 `;
 
-const PrimaryButton = styled(Button)`
-  && {
-    background-color: ${({ theme }) => theme.palette.primary.main};
-    color: white;
-    padding: 12px 32px;
-    font-weight: 600;
-    border-radius: 8px;
-    text-transform: none;
-    font-size: 1rem;
-    
-    &:hover {
-      background-color: ${({ theme }) => theme.palette.primary.dark};
-    }
-    
-    ${({ theme }) => theme.breakpoints.down('sm')} {
-      width: 200px;
-    }
-  }
-`;
-
-const SecondaryButton = styled(Button)`
-  && {
-    border: 2px solid ${({ theme }) => theme.palette.primary.main};
-    color: ${({ theme }) => theme.palette.primary.main};
-    padding: 10px 32px;
-    font-weight: 600;
-    border-radius: 8px;
-    text-transform: none;
-    font-size: 1rem;
-    
-    &:hover {
-      background-color: ${({ theme }) => theme.palette.primary.main};
-      color: white;
-    }
-    
-    ${({ theme }) => theme.breakpoints.down('sm')} {
-      width: 200px;
-    }
-  }
-`;
 
 const HeroWithTopSpacing = styled(Container)`
   && {
@@ -145,35 +68,43 @@ const HeroWithTopSpacing = styled(Container)`
 `;
 
 const Hero = () => {
-    return (
-        <HeroWithTopSpacing>
-            <HeroContent>
-                <TextContent>
-                    <HeroTitle variant="h1">
-                        Bandos bygger digitale produkter
-                    </HeroTitle>
-                    <HeroText variant="h6">
-              Ett lite team som tar deg fra idé til drift. MVP, prototyper, webapplikasjoner, nettsider og UX. Rask fremdrift, ryddig kommunikasjon, målbare resultater. Spesialisert på effektivisering av prosesser med generativ AI og automasjon med LLM.
-                    </HeroText>
-                    <ButtonContainer>
-                        <PrimaryButton variant="contained">
-                            Start et prosjekt
-                        </PrimaryButton>
-                        <SecondaryButton variant="outlined">
-                            Se arbeid
-                        </SecondaryButton>
-                    </ButtonContainer>
-                </TextContent>
+  const textContent = (
+    <>
+      <HeroTitle variant="h1">
+        Bandos bygger digitale produkter
+      </HeroTitle>
+      <HeroText variant="h6">
+        Ett lite team som tar deg fra idé til drift. MVP, prototyper, webapplikasjoner, nettsider og UX. Rask fremdrift, ryddig kommunikasjon, målbare resultater. Spesialisert på effektivisering av prosesser med generativ AI og automasjon med LLM.
+      </HeroText>
+      <ButtonContainer>
+        <PrimaryButton variant="contained">
+          Start et prosjekt
+        </PrimaryButton>
+        <OutlineButton variant="outlined">
+          Se arbeid
+        </OutlineButton>
+      </ButtonContainer>
+    </>
+  );
 
-                <ImageContainer>
-                    <StyledImage
-                        src={marketingMainSvg}
-                        alt="Marketing illustration"
-                    />
-                </ImageContainer>
-            </HeroContent>
-        </HeroWithTopSpacing>
-    );
+  const imageContent = (
+    <StyledImage
+      src={marketingMainSvg}
+      alt="Marketing illustration"
+    />
+  );
+
+  return (
+    <HeroWithTopSpacing>
+      <TwoColumnLayout
+        leftContent={textContent}
+        rightContent={imageContent}
+        minHeight={500}
+        leftMaxWidth={500}
+        rightMaxWidth={500}
+      />
+    </HeroWithTopSpacing>
+  );
 };
 
 export default Hero;
