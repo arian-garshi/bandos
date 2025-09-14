@@ -31,8 +31,6 @@ const HvaViGjorSection = () => {
           icon={process.icon}
           title={process.title}
           description={process.description}
-          layout="horizontal"
-          iconStyle="simple"
         />
       ))}
     </PageSection>

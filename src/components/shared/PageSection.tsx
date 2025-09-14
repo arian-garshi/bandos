@@ -1,84 +1,41 @@
 import { Container, Typography } from '@mui/material';
-import styled from 'styled-components';
 import type { ReactNode } from 'react';
 
 interface PageSectionProps {
-    title?: string;
-    titleVariant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-    children: ReactNode;
-    maxWidth?: number;
-    padding?: 'normal' | 'large' | 'small';
+  title?: string;
+  children: ReactNode;
+  maxWidth?: number;
 }
 
-// Reusable section container - eliminates duplicate SectionContainer across components
-const SectionContainer = styled(Container) <{ $padding: 'normal' | 'large' | 'small' }>`
-  && {
-    padding: ${({ $padding }) => {
-        switch ($padding) {
-            case 'large': return '120px 24px 80px 24px';
-            case 'small': return '40px 24px';
-            case 'normal':
-            default: return '80px 24px';
-        }
-    }};
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      padding: ${({ $padding }) => {
-        switch ($padding) {
-            case 'large': return '80px 16px 60px 16px';
-            case 'small': return '32px 16px';
-            case 'normal':
-            default: return '60px 16px';
-        }
-    }};
-    }
-  }
-`;
-
-// Reusable section title - eliminates duplicate SectionTitle across components
-const SectionTitle = styled(Typography)`
-  && {
-    color: ${({ theme }) => theme.palette.text.primary};
-    font-weight: 600;
-    margin-bottom: 48px;
-    text-align: center;
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      margin-bottom: 32px;
-    }
-  }
-`;
-
 /**
- * Reusable page section component that replaces duplicate SectionContainer + SectionTitle patterns.
- * Used in TjenesterSection, CardsSection, and other components.
- * 
- * @param title - Optional section title
- * @param titleVariant - Typography variant for title (default: h3)
- * @param children - Section content
- * @param maxWidth - Maximum width of container (default: 1200px from theme)
- * @param padding - Padding preset: 'normal' | 'large' | 'small'
+ * Simple page section using MUI sx props. Much cleaner than styled components!
  */
 const PageSection = ({
-    title,
-    titleVariant = 'h3',
-    children,
-    maxWidth,
-    padding = 'normal'
+  title,
+  children,
+  maxWidth
 }: PageSectionProps) => {
-    return (
-        <SectionContainer
-            $padding={padding}
-            style={{ maxWidth: maxWidth ? `${maxWidth}px` : undefined }}
+  return (
+    <Container sx={{
+      py: { xs: 7.5, md: 10 }, // 60px/8, 80px/8 
+      px: { xs: 2, md: 3 },    // 16px/8, 24px/8
+      maxWidth: maxWidth ? `${maxWidth}px` : '1200px'
+    }}>
+      {title && (
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 600,
+            textAlign: 'center',
+            mb: { xs: 4, md: 6 } // 32px/8, 48px/8
+          }}
         >
-            {title && (
-                <SectionTitle variant={titleVariant}>
-                    {title}
-                </SectionTitle>
-            )}
-            {children}
-        </SectionContainer>
-    );
+          {title}
+        </Typography>
+      )}
+      {children}
+    </Container>
+  );
 };
 
 export default PageSection;

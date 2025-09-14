@@ -1,4 +1,4 @@
-import { Container, Typography, Box } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import styled from 'styled-components';
 import { HelpCircle, Code, FileText, TrendingUp } from 'lucide-react';
 import PageSection from './shared/PageSection';
@@ -11,7 +11,6 @@ import userTestingImg from '../assets/graphics/user testing.svg';
 import accessibilityImg from '../assets/graphics/accessibility.svg';
 import prototypeMainImg from '../assets/graphics/prototypeMain.svg';
 import developmentMainImg from '../assets/graphics/developmentMain.svg';
-import securitypackageImg from '../assets/graphics/securitypackage.svg';
 
 // SectionContainer and SectionTitle replaced by PageSection
 
@@ -151,33 +150,7 @@ const FeatureImage = styled.img`
   object-fit: contain;
 `;
 
-const FeatureTitle = styled(Typography)`
-  && {
-    color: ${({ theme }) => theme.palette.text.primary};
-    font-weight: 600;
-    margin-bottom: 8px;
-    font-size: 1.125rem;
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      font-size: 1rem;
-    }
-  }
-`;
-
-const FeatureDescription = styled(Typography)`
-  && {
-    color: ${({ theme }) => theme.palette.text.secondary};
-    line-height: 1.6;
-    font-size: 0.95rem;
-    max-width: 200px;
-    margin: 0 auto;
-    text-align: left;
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      font-size: 0.9rem;
-    }
-  }
-`;
+// Simplified - use sx prop instead of styled components
 
 const ServicesContainer = styled(Box)`
   max-width: 1000px;
@@ -196,70 +169,7 @@ const AlternateServiceSection = styled(ServiceSection)`
   }
 `;
 
-const ExamplesList = styled(Box)`
-  margin: 32px 0;
-`;
-
-const ExampleItem = styled(Box)`
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  margin-bottom: 32px;
-  padding: 28px 24px;
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: 12px;
-  border: 1px solid ${({ theme }) => theme.colors.gray.light};
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const ExampleIcon = styled(Box)`
-  background: linear-gradient(135deg, ${({ theme }) => theme.palette.primary.main} 0%, ${({ theme }) => theme.palette.primary.light} 100%);
-  color: white;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 0;
-  box-shadow: 0 4px 12px rgba(210, 65, 91, 0.25);
-`;
-
-const ExampleContent = styled(Box)`
-  flex: 1;
-`;
-
-const ExampleTitle = styled(Typography)`
-  && {
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.gray.darker};
-    margin-bottom: 12px;
-    font-size: 1.25rem;
-    letter-spacing: -0.01em;
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      font-size: 1.125rem;
-    }
-  }
-`;
-
-const ExampleDescription = styled(Typography)`
-  && {
-    color: ${({ theme }) => theme.colors.gray.dark};
-    line-height: 1.65;
-    font-size: 1rem;
-    font-weight: 400;
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      font-size: 0.95rem;
-    }
-  }
-`;
+// Removed unused styled components - replaced by IconTextItem
 
 const ProcessSteps = styled(Box)`
   background: ${({ theme }) => theme.colors.gray.light};
@@ -405,8 +315,11 @@ const TjenesterSection = () => {
                 Vi starter med ett avgrenset mål som kan måles. Deretter bygger vi en første versjon som går mot virkelige brukere og verktøyene dere allerede bruker. Løsningen lærer innenfor tydelige rammer og krever godkjenning der det er riktig. Du får kort vei til effekt og en plan for neste trinn når gevinsten er dokumentert.
               </ServiceDescription>
 
-              <ExamplesList>
-                <Typography variant="h6" style={{ fontWeight: 600, marginBottom: '24px' }}>
+              <Box sx={{ my: 4 }}>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 600, mb: 3 }}
+                >
                   Eksempler som leverer nå
                 </Typography>
                 {aiExamples.map((example, index) => (
@@ -415,12 +328,10 @@ const TjenesterSection = () => {
                     icon={example.icon}
                     title={example.title}
                     description={example.description}
-                    layout="horizontal"
-                    iconStyle="elevated"
-                    gap={20}
+                    elevated={true}
                   />
                 ))}
-              </ExamplesList>
+              </Box>
 
               <ProcessSteps>
                 <ProcessTitle>
@@ -448,12 +359,27 @@ const TjenesterSection = () => {
                 alt={feature.title}
               />
             </FeatureImageContainer>
-            <FeatureTitle>
+            <Typography
+              sx={{
+                fontWeight: 600,
+                mb: 1,
+                fontSize: { xs: '1rem', md: '1.125rem' }
+              }}
+            >
               {feature.title}
-            </FeatureTitle>
-            <FeatureDescription>
+            </Typography>
+            <Typography
+              sx={{
+                color: 'text.secondary',
+                lineHeight: 1.6,
+                fontSize: { xs: '0.9rem', md: '0.95rem' },
+                maxWidth: '200px',
+                mx: 'auto',
+                textAlign: 'left'
+              }}
+            >
               {feature.description}
-            </FeatureDescription>
+            </Typography>
           </FeatureCard>
         ))}
       </FeaturesGrid>

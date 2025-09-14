@@ -7,128 +7,46 @@ import FullWidthSection from './shared/FullWidthSection';
 
 // ContactSection and TransitionShape replaced by FullWidthSection
 
-const ContactContainer = styled(Container)`
-  && {
-    padding: 180px 24px 80px 24px;
-    max-width: 800px;
-    position: relative;
-    z-index: 1;
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      padding: 140px 16px 60px 16px;
-    }
-  }
-`;
+// Simplified - use sx prop instead of custom styled container
 
-const ContactContent = styled(Box)`
-  text-align: center;
-  margin-bottom: 64px;
-  
-  ${({ theme }) => theme.breakpoints.down('md')} {
-    margin-bottom: 48px;
-  }
-`;
+// Simplified - use sx prop instead of custom styled components
 
-const ContactTitle = styled(Typography)`
-  && {
-    color: ${({ theme }) => theme.colors.white};
-    font-weight: 600;
-    margin-bottom: 16px;
-    font-size: 2.5rem;
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      font-size: 2rem;
-    }
-  }
-`;
-
-const ContactSubtitle = styled(Typography)`
-  && {
-    color: ${({ theme }) => theme.colors.gray.medium};
-    font-size: 1.25rem;
-    max-width: 500px;
-    margin: 0 auto;
-    line-height: 1.6;
-    
-    ${({ theme }) => theme.breakpoints.down('md')} {
-      font-size: 1.125rem;
-    }
-  }
-`;
-
-const FormContainer = styled(Box)`
-  max-width: 600px;
-  margin: 0 auto;
-`;
-
-const FormGrid = styled(Box)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 24px;
-  
-  ${({ theme }) => theme.breakpoints.down('sm')} {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-`;
-
-const StyledTextField = styled(TextField)`
-  && {
-    .MuiOutlinedInput-root {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.08);
-      }
-      
-      &.Mui-focused {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-      
-      .MuiOutlinedInput-notchedOutline {
-        border-color: rgba(255, 255, 255, 0.2);
-      }
-      
-      &:hover .MuiOutlinedInput-notchedOutline {
-        border-color: rgba(255, 255, 255, 0.3);
-      }
-      
-      &.Mui-focused .MuiOutlinedInput-notchedOutline {
-        border-color: ${({ theme }) => theme.palette.primary.main};
-        border-width: 2px;
-      }
-    }
-    
-    .MuiInputLabel-root {
-      color: ${({ theme }) => theme.colors.gray.medium};
-      
-      &.Mui-focused {
-        color: ${({ theme }) => theme.colors.primary};
-      }
-    }
-    
-    .MuiOutlinedInput-input {
-      color: ${({ theme }) => theme.colors.white};
-      
-      &::placeholder {
-        color: ${({ theme }) => theme.colors.gray.medium};
-        opacity: 1;
-      }
-    }
-  }
-`;
-
-const FullWidthTextField = styled(StyledTextField)`
-  && {
-    margin-bottom: 32px;
-    
-    ${({ theme }) => theme.breakpoints.down('sm')} {
-      margin-bottom: 24px;
-    }
-  }
-`;
+// Simplified dark TextField styling using sx props
+const darkTextFieldSx = {
+  '& .MuiOutlinedInput-root': {
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    borderRadius: 1,
+    '&:hover': {
+      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+      '& .MuiOutlinedInput-notchedOutline': {
+        borderColor: 'rgba(255, 255, 255, 0.3)',
+      },
+    },
+    '&.Mui-focused': {
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      '& .MuiOutlinedInput-notchedOutline': {
+        borderColor: 'primary.main',
+        borderWidth: 2,
+      },
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'rgba(255, 255, 255, 0.2)',
+    },
+  },
+  '& .MuiInputLabel-root': {
+    color: 'grey.400',
+    '&.Mui-focused': {
+      color: 'primary.main',
+    },
+  },
+  '& .MuiOutlinedInput-input': {
+    color: 'white',
+    '&::placeholder': {
+      color: 'grey.400',
+      opacity: 1,
+    },
+  },
+};
 
 
 const StatusMessage = styled(Typography)`
@@ -226,24 +144,51 @@ const ContactForm = () => {
 
   return (
     <FullWidthSection
-      backgroundThemeColor="black"
+      background="black"
       showTopTransition={true}
-      transitionColor={undefined} // Uses default white
     >
-      <ContactContainer>
-        <ContactContent>
-          <ContactTitle variant="h2">
+      <Container sx={{
+        pt: { xs: 17.5, md: 22.5 }, // 140px/8, 180px/8 (theme spacing)
+        pb: { xs: 7.5, md: 10 },    // 60px/8, 80px/8 
+        px: { xs: 2, md: 3 },       // 16px/8, 24px/8
+        maxWidth: '800px',
+        position: 'relative',
+        zIndex: 1
+      }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
+          <Typography
+            variant="h2"
+            sx={{
+              color: 'white',
+              fontWeight: 600,
+              mb: 2,
+              fontSize: { xs: '2rem', md: '2.5rem' }
+            }}
+          >
             La oss snakke sammen
-          </ContactTitle>
-          <ContactSubtitle>
+          </Typography>
+          <Typography
+            sx={{
+              color: 'grey.400',
+              fontSize: { xs: '1.125rem', md: '1.25rem' },
+              maxWidth: '500px',
+              mx: 'auto',
+              lineHeight: 1.6
+            }}
+          >
             Fortell oss om prosjektet ditt, så kommer vi tilbake til deg innen 24 timer.
-          </ContactSubtitle>
-        </ContactContent>
+          </Typography>
+        </Box>
 
-        <FormContainer>
+        <Box sx={{ maxWidth: '600px', mx: 'auto' }}>
           <form onSubmit={handleSubmit}>
-            <FormGrid>
-              <StyledTextField
+            <Box sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+              gap: 3,
+              mb: 3
+            }}>
+              <TextField
                 name="name"
                 label="Navn"
                 variant="outlined"
@@ -251,8 +196,9 @@ const ContactForm = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                sx={darkTextFieldSx}
               />
-              <StyledTextField
+              <TextField
                 name="email"
                 label="E-post"
                 type="email"
@@ -261,29 +207,37 @@ const ContactForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                sx={darkTextFieldSx}
               />
-            </FormGrid>
+            </Box>
 
-            <FormGrid>
-              <StyledTextField
+            <Box sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+              gap: 3,
+              mb: 3
+            }}>
+              <TextField
                 name="company"
                 label="Bedrift"
                 variant="outlined"
                 fullWidth
                 value={formData.company}
                 onChange={handleChange}
+                sx={darkTextFieldSx}
               />
-              <StyledTextField
+              <TextField
                 name="phone"
                 label="Telefon"
                 variant="outlined"
                 fullWidth
                 value={formData.phone}
                 onChange={handleChange}
+                sx={darkTextFieldSx}
               />
-            </FormGrid>
+            </Box>
 
-            <FullWidthTextField
+            <TextField
               name="message"
               label="Fortell oss om prosjektet"
               variant="outlined"
@@ -293,6 +247,7 @@ const ContactForm = () => {
               value={formData.message}
               onChange={handleChange}
               required
+              sx={{ ...darkTextFieldSx, mb: 4 }}
             />
 
             <Box textAlign="center">
@@ -317,8 +272,8 @@ const ContactForm = () => {
               )}
             </Box>
           </form>
-        </FormContainer>
-      </ContactContainer>
+        </Box>
+      </Container>
       <Footer />
     </FullWidthSection>
   );
