@@ -153,7 +153,7 @@ const Hero = () => {
                         Bandos bygger digitale produkter
                     </HeroTitle>
                     <HeroText variant="h6">
-                        Ett lite team som tar deg fra idé til drift. MVP, prototyper, webapplikasjoner, nettsider og UX. Rask fremdrift, ryddig kommunikasjon, målbare resultater.
+              Ett lite team som tar deg fra idé til drift. MVP, prototyper, webapplikasjoner, nettsider og UX. Rask fremdrift, ryddig kommunikasjon, målbare resultater. Spesialisert på effektivisering av prosesser med generativ AI og automasjon med LLM.
                     </HeroText>
                     <ButtonContainer>
                         <PrimaryButton variant="contained">

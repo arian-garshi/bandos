@@ -165,26 +165,27 @@ const Footer = () => {
           </BrandColumn>
 
           <FooterColumn>
-            <FooterTitle>Tjenester</FooterTitle>
-            <FooterLink href="#webutvikling">Webutvikling</FooterLink>
-            <FooterLink href="#design">Design og workshop</FooterLink>
-            <FooterLink href="#ai-losninger">AI-løsninger</FooterLink>
-            <FooterLink href="#cms">CMS og innhold</FooterLink>
-          </FooterColumn>
-
-          <FooterColumn>
-            <FooterTitle>Selskap</FooterTitle>
-            <FooterLink href="#om-oss">Om oss</FooterLink>
-            <FooterLink href="#arbeid">Vårt arbeid</FooterLink>
-            <FooterLink href="#prosess">Prosess</FooterLink>
-            <FooterLink href="#blogg">Blogg</FooterLink>
-          </FooterColumn>
-
-          <FooterColumn>
-            <FooterTitle>Kontakt</FooterTitle>
-            <ContactInfo>post@bandos.no</ContactInfo>
-            <ContactInfo>+47 123 45 678</ContactInfo>
+            <FooterTitle>Kontakt oss</FooterTitle>
+            <FooterLink href="mailto:post@bandos.no">post@bandos.no</FooterLink>
             <ContactInfo>Bergen, Norge</ContactInfo>
+            <ContactInfo>Org.nr: 123 456 789</ContactInfo>
+          </FooterColumn>
+
+          <FooterColumn>
+            <FooterTitle>Kom i gang</FooterTitle>
+            <FooterLink href="mailto:post@bandos.no?subject=Ny%20henvendelse%20-%20Bandos">Send en henvendelse</FooterLink>
+            <FooterLink href="tel:+4712345678">Ring oss</FooterLink>
+            <FooterDescription style={{ fontSize: '0.9rem', marginTop: '12px' }}>
+              Vi svarer innen 24 timer på alle henvendelser.
+            </FooterDescription>
+          </FooterColumn>
+
+          <FooterColumn>
+            <FooterTitle>Våre tjenester</FooterTitle>
+            <ContactInfo>• Webutvikling</ContactInfo>
+            <ContactInfo>• Design og workshop</ContactInfo>
+            <ContactInfo>• AI og automasjon</ContactInfo>
+            <ContactInfo>• Generativ programmering</ContactInfo>
           </FooterColumn>
         </FooterContent>
 
@@ -193,9 +194,7 @@ const Footer = () => {
             © {currentYear} Bandos. Alle rettigheter reservert.
           </Copyright>
           <LegalLinks>
-            <LegalLink href="#personvern">Personvern</LegalLink>
-            <LegalLink href="#vilkar">Vilkår</LegalLink>
-            <LegalLink href="#cookies">Cookies</LegalLink>
+            <LegalLink href="mailto:post@bandos.no?subject=Personvernforespørsel">Personvern</LegalLink>
           </LegalLinks>
         </FooterBottom>
       </FooterContainer>

@@ -1,5 +1,6 @@
 import { Container, Typography, Box } from '@mui/material';
 import styled from 'styled-components';
+import { HelpCircle, Code, FileText, TrendingUp } from 'lucide-react';
 import responsivityImg from '../assets/graphics/responsivity.svg';
 import seoImg from '../assets/graphics/seo.svg';
 import safetyImg from '../assets/graphics/safety.svg';
@@ -8,6 +9,7 @@ import userTestingImg from '../assets/graphics/user testing.svg';
 import accessibilityImg from '../assets/graphics/accessibility.svg';
 import prototypeMainImg from '../assets/graphics/prototypeMain.svg';
 import developmentMainImg from '../assets/graphics/developmentMain.svg';
+import securitypackageImg from '../assets/graphics/securitypackage.svg';
 
 const SectionContainer = styled(Container)`
   && {
@@ -213,118 +215,276 @@ const AlternateServiceSection = styled(ServiceSection)`
   }
 `;
 
+const ExamplesList = styled(Box)`
+  margin: 32px 0;
+`;
+
+const ExampleItem = styled(Box)`
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 32px;
+  padding: 28px 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const ExampleIcon = styled(Box)`
+  background: linear-gradient(135deg, ${({ theme }) => theme.palette.primary.main} 0%, ${({ theme }) => theme.palette.primary.light} 100%);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0;
+  box-shadow: 0 4px 12px rgba(210, 65, 91, 0.25);
+`;
+
+const ExampleContent = styled(Box)`
+  flex: 1;
+`;
+
+const ExampleTitle = styled(Typography)`
+  && {
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    
+    ${({ theme }) => theme.breakpoints.down('md')} {
+      font-size: 1.125rem;
+    }
+  }
+`;
+
+const ExampleDescription = styled(Typography)`
+  && {
+    color: #4a5568;
+    line-height: 1.65;
+    font-size: 1rem;
+    font-weight: 400;
+    
+    ${({ theme }) => theme.breakpoints.down('md')} {
+      font-size: 0.95rem;
+    }
+  }
+`;
+
+const ProcessSteps = styled(Box)`
+  background: #f8f9fa;
+  padding: 24px;
+  border-radius: 8px;
+  margin-top: 24px;
+`;
+
+const ProcessTitle = styled(Typography)`
+  && {
+    font-weight: 600;
+    color: ${({ theme }) => theme.palette.text.primary};
+    margin-bottom: 16px;
+    font-size: 1.125rem;
+  }
+`;
+
+const ProcessDescription = styled(Typography)`
+  && {
+    color: ${({ theme }) => theme.palette.text.secondary};
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+`;
+
 const TjenesterSection = () => {
-    const features = [
-        {
-            image: responsivityImg,
-            title: "Responsiv",
-            description: "Din nettside vil bli tilpasset alle enheter, skjermstørrelser og orienteringer"
-        },
-        {
-            image: seoImg,
-            title: "SEO",
-            description: "Økt synlighet i Google søk ved hjelp av Søkemotor-optimalisering"
-        },
-        {
-            image: safetyImg,
-            title: "Trygg",
-            description: "Robust kode sikret med kryptert forbindelse (SSL)"
-        },
-        {
-            image: analyticsImg,
-            title: "Analyse",
-            description: "Integrering av Google analytics for klar oversikt over besøkende trafikk"
-        },
-        {
-            image: userTestingImg,
-            title: "Brukertestet",
-            description: "Gjennom grundig testing via ekte brukere optimaliseres design og flyt"
-        },
-        {
-            image: accessibilityImg,
-            title: "Brukervennlig",
-            description: "Brukervennlighet for alle, uavhengig av funksjons-evne."
-        }
-    ];
+  const aiExamples = [
+    {
+      icon: Code,
+      title: "Generativ programmering",
+      description: "Vi bruker generativ AI til å bygge fullverdige applikasjoner på brøkdelen av tiden og kostnaden. Fra idé til fungerende prototype på dager, ikke måneder. Perfekt for å teste konsepter, validere marked og bevise verdi før du investerer i full utvikling. Koden er ren, dokumentert og kan videreutvikles av alle utviklere."
+    },
+    {
+      icon: HelpCircle,
+      title: "Selvbetjent support på egne dokumenter",
+      description: "Svar fra håndbøker, kontrakter og rutiner med kildepeker og tilgangskontroll. Avlaster support og gjør innholdet bedre over tid."
+    },
+    {
+      icon: FileText,
+      title: "Faktura og dokumentflyt til økonomi",
+      description: "Hent data fra PDF og epost, normaliser, valider mot regler og postér trygt til regnskap med full sporbarhet."
+    },
+    {
+      icon: TrendingUp,
+      title: "Kreativ optimalisering og A/B testing",
+      description: "Lag sikre varianter av annonsetekst og bilder, test løpende, skaler vinnere, pause tapere og juster landingssider etter faktiske konverteringer. Integrert med Google Ads og Meta med rene UTM og server side sporing."
+    }
+  ];
 
-    return (
-        <SectionContainer>
-            <SectionTitle variant="h3">
-                Tjenester
-            </SectionTitle>
+  const features = [
+    {
+      image: responsivityImg,
+      title: "Responsiv",
+      description: "Din nettside vil bli tilpasset alle enheter, skjermstørrelser og orienteringer"
+    },
+    {
+      image: seoImg,
+      title: "SEO",
+      description: "Økt synlighet i Google søk ved hjelp av Søkemotor-optimalisering"
+    },
+    {
+      image: safetyImg,
+      title: "Trygg",
+      description: "Robust kode sikret med kryptert forbindelse (SSL)"
+    },
+    {
+      image: analyticsImg,
+      title: "Analyse",
+      description: "Integrering av Google analytics for klar oversikt over besøkende trafikk"
+    },
+    {
+      image: userTestingImg,
+      title: "Brukertestet",
+      description: "Gjennom grundig testing via ekte brukere optimaliseres design og flyt"
+    },
+    {
+      image: accessibilityImg,
+      title: "Brukervennlig",
+      description: "Brukervennlighet for alle, uavhengig av funksjons-evne."
+    }
+  ];
 
-            <ServicesContainer>
-                <ServiceSection>
-                    <ServiceContent>
-                        <ServiceTextContent>
-                            <ServiceTitle variant="h4">
-                                Webutvikling
-                            </ServiceTitle>
-                            <ServiceDescription>
-                                Vi bygger i React på frontend og Node på backend, med Sanity som headless CMS. Det gir rask lastetid, ryddig komponentarkitektur og enkel redigering av innhold uten at designet ryker. Nye sider og moduler kan legges til uten full ombygging, og du får stabil drift med SSL, backup og overvåking fra dag én.
-                            </ServiceDescription>
-                            <ServiceDescription>
-                                Vi bruker generativ AI som utviklingsakselerator, men all kode kvalitetssikres manuelt. I tillegg setter vi opp AI-drevne løsninger med LLM og agenter som automatiserer oppgaver i dine prosesser, som innholdsproduksjon, dokumentoppsummering, kundestøtte, dataoppslag og integrasjoner mot tredjepart. Løsningene kan hente og bruke dine data trygt med tilgangsstyring, logging og sporing, og de skalerer når behovet vokser.
-                            </ServiceDescription>
-                        </ServiceTextContent>
+  return (
+    <SectionContainer>
+      <SectionTitle variant="h3">
+        Tjenester
+      </SectionTitle>
 
-                        <ServiceImageContainer>
-                            <ServiceImage
-                                src={developmentMainImg}
-                                alt="Webutvikling illustration"
-                            />
-                        </ServiceImageContainer>
-                    </ServiceContent>
-                </ServiceSection>
+      <ServicesContainer>
+        <ServiceSection>
+          <ServiceContent>
+            <ServiceTextContent>
+              <ServiceTitle variant="h4">
+                Webutvikling
+              </ServiceTitle>
+              <ServiceDescription>
+                Vi bygger i React på frontend og Node på backend, med Sanity som headless CMS. Det gir rask lastetid, ryddig komponentarkitektur og enkel redigering av innhold uten at designet ryker. Nye sider og moduler kan legges til uten full ombygging, og du får stabil drift med SSL, backup og overvåking fra dag én.
+              </ServiceDescription>
+              <ServiceDescription>
+                Vi bruker generativ AI som utviklingsakselerator, men all kode kvalitetssikres manuelt. I tillegg setter vi opp AI-drevne løsninger med LLM og agenter som automatiserer oppgaver i dine prosesser, som innholdsproduksjon, dokumentoppsummering, kundestøtte, dataoppslag og integrasjoner mot tredjepart. Løsningene kan hente og bruke dine data trygt med tilgangsstyring, logging og sporing, og de skalerer når behovet vokser.
+              </ServiceDescription>
+            </ServiceTextContent>
 
-                <AlternateServiceSection>
-                    <ServiceContent>
-                        <ServiceTextContent>
-                            <ServiceTitle variant="h4">
-                                Design og workshop
-                            </ServiceTitle>
-                            <ServiceDescription>
-                                Vi bruker design thinking for å gå raskt fra antagelser til bevis. Vi avklarer problemet, målgruppen og hva ideen skal oppnå, gjør lettvekts markedsinnsikt med intervjuer og enkle spørreundersøkelser, ser på konkurrenter og formulerer hypoteser som kan testes. Deretter kjører vi idemyldring, prioriterer det som faktisk betyr noe, lager wireframes eller klikkbare prototyper og tester på ekte brukere.
-                            </ServiceDescription>
-                            <ServiceDescription>
-                                Du får konkrete funn, et beslutningsgrunnlag og en første backlog som peker rett mot en smal MVP. Vi kan rekruttere riktige testpersoner, fasilitere workshops med teamet ditt og dokumentere alt i klare anbefalinger. Målet er at en oppstart får trygghet i om ideen treffer, hva som må bygges først, og hvilke risikoer som kan kuttes før du bruker mer tid og penger.
-                            </ServiceDescription>
-                        </ServiceTextContent>
+            <ServiceImageContainer>
+              <ServiceImage
+                src={developmentMainImg}
+                alt="Webutvikling illustration"
+              />
+            </ServiceImageContainer>
+          </ServiceContent>
+        </ServiceSection>
 
-                        <ServiceImageContainer>
-                            <ServiceImage
-                                src={prototypeMainImg}
-                                alt="Design og workshop illustration"
-                            />
-                        </ServiceImageContainer>
-                    </ServiceContent>
-                </AlternateServiceSection>
-            </ServicesContainer>
+        <AlternateServiceSection>
+          <ServiceContent>
+            <ServiceTextContent>
+              <ServiceTitle variant="h4">
+                Design og workshop
+              </ServiceTitle>
+              <ServiceDescription>
+                Vi bruker design thinking for å gå raskt fra antagelser til bevis. Vi avklarer problemet, målgruppen og hva ideen skal oppnå, gjør lettvekts markedsinnsikt med intervjuer og enkle spørreundersøkelser, ser på konkurrenter og formulerer hypoteser som kan testes. Deretter kjører vi idemyldring, prioriterer det som faktisk betyr noe, lager wireframes eller klikkbare prototyper og tester på ekte brukere.
+              </ServiceDescription>
+              <ServiceDescription>
+                Du får konkrete funn, et beslutningsgrunnlag og en første backlog som peker rett mot en smal MVP. Vi kan rekruttere riktige testpersoner, fasilitere workshops med teamet ditt og dokumentere alt i klare anbefalinger. Målet er at en oppstart får trygghet i om ideen treffer, hva som må bygges først, og hvilke risikoer som kan kuttes før du bruker mer tid og penger.
+              </ServiceDescription>
+            </ServiceTextContent>
 
-            <IncludedTitle>
-                Inkludert i løsningen
-            </IncludedTitle>
+            <ServiceImageContainer>
+              <ServiceImage
+                src={prototypeMainImg}
+                alt="Design og workshop illustration"
+              />
+            </ServiceImageContainer>
+          </ServiceContent>
+        </AlternateServiceSection>
 
-            <FeaturesGrid>
-                {features.map((feature, index) => (
-                    <FeatureCard key={index}>
-                        <FeatureImageContainer>
-                            <FeatureImage
-                                src={feature.image}
-                                alt={feature.title}
-                            />
-                        </FeatureImageContainer>
-                        <FeatureTitle>
-                            {feature.title}
-                        </FeatureTitle>
-                        <FeatureDescription>
-                            {feature.description}
-                        </FeatureDescription>
-                    </FeatureCard>
+        <ServiceSection>
+          <ServiceContent>
+            <ServiceTextContent style={{ maxWidth: '100%' }}>
+              <ServiceTitle variant="h4">
+                AI og automasjon
+              </ServiceTitle>
+              <ServiceDescription>
+                Vi gjør LLM og generativ AI til konkret verdi i hverdagen. Vi finner tidstyvene i prosessene dine, kobler løsninger til egne dokumenter og systemer, og bygger små agenter som henter, forstår og handler. Tilgangsstyring, logging og sporbarhet er på plass fra første dag. Data forblir dine. Levering kan skje i din sky eller på egen drift der bransjen krever det.
+              </ServiceDescription>
+              <ServiceDescription>
+                Vi starter med ett avgrenset mål som kan måles. Deretter bygger vi en første versjon som går mot virkelige brukere og verktøyene dere allerede bruker. Løsningen lærer innenfor tydelige rammer og krever godkjenning der det er riktig. Du får kort vei til effekt og en plan for neste trinn når gevinsten er dokumentert.
+              </ServiceDescription>
+
+              <ExamplesList>
+                <Typography variant="h6" style={{ fontWeight: 600, marginBottom: '24px', color: '#2c2c2c' }}>
+                  Eksempler som leverer nå
+                </Typography>
+                {aiExamples.map((example, index) => (
+                  <ExampleItem key={index}>
+                    <ExampleIcon>
+                      <example.icon size={20} />
+                    </ExampleIcon>
+                    <ExampleContent>
+                      <ExampleTitle>
+                        {example.title}
+                      </ExampleTitle>
+                      <ExampleDescription>
+                        {example.description}
+                      </ExampleDescription>
+                    </ExampleContent>
+                  </ExampleItem>
                 ))}
-            </FeaturesGrid>
-        </SectionContainer>
-    );
+              </ExamplesList>
+
+              <ProcessSteps>
+                <ProcessTitle>
+                  Slik jobber vi
+                </ProcessTitle>
+                <ProcessDescription>
+                  Kartlegging av mål og prosess. Prototype koblet til dine data og verktøy. Kontrollert utrulling med målinger, feillogging og endringslogg. Løpende forbedringer basert på tall, ikke magefølelse. Alt dokumenteres og kan overleveres internt uten låsing til oss.
+                </ProcessDescription>
+              </ProcessSteps>
+            </ServiceTextContent>
+          </ServiceContent>
+        </ServiceSection>
+      </ServicesContainer>
+
+      <IncludedTitle>
+        Inkludert i løsningen
+      </IncludedTitle>
+
+      <FeaturesGrid>
+        {features.map((feature, index) => (
+          <FeatureCard key={index}>
+            <FeatureImageContainer>
+              <FeatureImage
+                src={feature.image}
+                alt={feature.title}
+              />
+            </FeatureImageContainer>
+            <FeatureTitle>
+              {feature.title}
+            </FeatureTitle>
+            <FeatureDescription>
+              {feature.description}
+            </FeatureDescription>
+          </FeatureCard>
+        ))}
+      </FeaturesGrid>
+    </SectionContainer>
+  );
 };
 
 export default TjenesterSection;
